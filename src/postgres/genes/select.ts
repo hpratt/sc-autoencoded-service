@@ -19,14 +19,14 @@ function getGeneValues(result: GeneExpressionValue, geneMap: Map<string, string>
 }
 
 export async function selectAllGenes(db: IDatabase<any>): Promise<string[]> {
-    return (await db.any("SELECT name FROM id_gene ORDER BY id ASC")).map(x => x.name);
+    return (await db.any("SELECT name FROM id_genes ORDER BY id ASC")).map(x => x.name);
 }
 
 export async function selectGeneExpression(
     type: GeneExpressionType, genes: string[], parameters: CellParameters, db: IDatabase<any>
 ): Promise<GeneExpressionValue[]> {
     const geneIds = associateBy<GeneExpressionResult, number, string>(
-        await db.any(`SELECT id, name FROM id_gene WHERE name = ANY(\${genes})`, { genes }),
+        await db.any(`SELECT id, name FROM id_genes WHERE name = ANY(\${genes})`, { genes }),
         x => x.name, x => x.id
     );
     const geneMap = associateBy([ ...geneIds.keys() ].map( (x, i) => [ x, `g${i}` ]), x => x[1], x => x[0]);

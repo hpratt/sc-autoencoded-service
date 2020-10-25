@@ -15,7 +15,7 @@ echo "Postgres started. Starting import..."
 
 docker exec importer_importertest_1 java -jar /app/annotated-object-importer.jar datasets \
     --db-url jdbc:postgresql://postgrestest:5432/postgres --db-username postgres --db-schema test --replace-schema \
-    --id-files dataset\>/data/cells.txt --id-files gene\>/data/genes.txt \
+    --id-files dataset\>/data/cells.txt --id-files genes\>/data/genes.txt \
     --coordinate-files dataset=latent\>/data/latent.txt \
     --matrix-files dataset=raw\>/data/raw.txt\;normalized\>/data/normalized.txt\;decoded\>/data/decoded.txt
 
