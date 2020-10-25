@@ -1,7 +1,6 @@
-import { gql } from "apollo-server-core";
-import { makeExecutableSchema } from "graphql-tools";
-import { cellResolvers } from "../resolvers/cells";
-import { geneResolvers } from '../resolvers/genes';
+import { gql } from "apollo-server-express";
+import { buildFederatedSchema } from "@apollo/federation";
+import { resolvers } from '../resolvers';
 
 export const typeDefs = gql`
 
@@ -60,12 +59,4 @@ export const typeDefs = gql`
     }
 
 `;
-
-export const schema = makeExecutableSchema({
-    typeDefs: [typeDefs],
-    resolvers: [
-        cellResolvers,
-        geneResolvers
-    ] as any,
-    inheritResolversFromInterfaces: true
-});
+export const schema = buildFederatedSchema([{ typeDefs, resolvers }]);
