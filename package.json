@@ -1,6 +1,6 @@
 {
     "name": "autoencoded-sc-service",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "GraphQL service for querying autoencoded single cell data",
     "main": "index.js",
     "repository": "git@github.com:/hpratt/sc-autoencoded-service",
