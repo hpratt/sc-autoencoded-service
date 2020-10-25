@@ -1,0 +1,17 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    # test service
+    - uses: actions/checkout@v1
+    - name: Test Service
+      run: |
+        echo ${{ secrets.DOCKER_TOKEN }} | docker login --username "weng-lab" --password-stdin docker.pkg.github.com
+        scripts/test.sh
