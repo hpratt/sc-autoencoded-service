@@ -56,6 +56,11 @@ export const typeDefs = gql`
 
         genes: [String!]!
 
+        cellCount(
+            ids: [String]
+            latent_polygon: [PointInput!]
+        ): Int!
+
     }
 
 `;

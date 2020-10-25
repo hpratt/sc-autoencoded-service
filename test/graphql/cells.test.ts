@@ -11,6 +11,7 @@ query query($ids: [String!], $latent_polygon: [PointInput!]) {
             y
         }
     }
+    cellCount(ids: $ids, latent_polygon: $latent_polygon)
 }
 `;
 
@@ -26,6 +27,7 @@ describe("genes", () => {
             name: "cell-1",
             latent: { x: 0, y: 0 }
         });
+        expect(response.body.data.cellCount).toBe(8);
     });
 
     test("should return eight cells", async () => {
@@ -38,6 +40,7 @@ describe("genes", () => {
             name: "cell-1",
             latent: { x: 0, y: 0 }
         });
+        expect(response.body.data.cellCount).toBe(1);
     });
 
     test("should return four cells for a given polygon", async () => {
@@ -51,6 +54,7 @@ describe("genes", () => {
             name: "cell-5",
             latent: { x: 1, y: 1 }
         });
+        expect(response.body.data.cellCount).toBe(4);
     });
 
 });

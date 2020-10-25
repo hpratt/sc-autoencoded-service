@@ -1,6 +1,6 @@
 import { IDatabase } from 'pg-promise';
 import { conditionClauses, ParameterMap, whereClause } from 'queryz';
-import { CellParameters, CellResult } from '../types';
+import { CellCountResult, CellParameters, CellResult } from '../types';
 
 export const CELL_PARAMETERS: ParameterMap<CellParameters> = new Map([
     [ "ids", (tableName: string) => `${tableName}.name = ANY(\${${tableName}.ids})` ],
@@ -20,5 +20,13 @@ export function selectCells(parameters: CellParameters, db: IDatabase<any>): Pro
           FROM id_dataset_view AS d
          WHERE ${whereClause(conditionClauses(parameters, CELL_PARAMETERS, "d"))}
          ORDER BY name ASC
+    `, { d: parameters });
+}
+
+export function selectCellCount(parameters: CellParameters, db: IDatabase<any>): Promise<CellCountResult> {
+    return db.one(`
+        SELECT COUNT(*)::INT AS c
+          FROM id_dataset_view AS d
+         WHERE ${whereClause(conditionClauses(parameters, CELL_PARAMETERS, "d"))}
     `, { d: parameters });
 }

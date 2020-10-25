@@ -44,3 +44,7 @@ export interface CellResult {
     normalizedExpression?: number[];
     decodedExpression?: number[];
 };
+
+export type CellCountResult = {
+    c: number;
+};

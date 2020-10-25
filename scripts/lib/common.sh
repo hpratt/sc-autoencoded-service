@@ -3,10 +3,10 @@ GKE_CLUSTER=api
 GKE_ZONE=us-east1-d
 GKE_PROJECT=devenv-215523
 GCR_PROJECT_ID=devenv-215523
-SERVICE_DOCKER_IMAGE_NAME=annotated-datasets-service
+SERVICE_DOCKER_IMAGE_NAME=autoencoded-sc-service
 IMPORTER_DOCKER_IMAGE_NAME=annotated-object-importer
-KUBE_DEPLOYMENT_NAME=annotated-datasets-service-deployment
-KUBE_DEPLOYMENT_CONTAINER_NAME=annotated-datasets-service
+KUBE_DEPLOYMENT_NAME=autoencoded-sc-service-deployment
+KUBE_DEPLOYMENT_CONTAINER_NAME=autoencoded-sc-service
 
 # When running in ci, we will set environment variables with base64 encoded versions of service key files.
 # This will log you in with the given account.

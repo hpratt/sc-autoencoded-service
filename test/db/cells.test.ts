@@ -1,4 +1,5 @@
 import { db, selectCells } from "../../src/postgres";
+import { selectCellCount } from "../../src/postgres/cells/select";
 
 describe("cell selection", () => {
 
@@ -10,6 +11,7 @@ describe("cell selection", () => {
             name: "cell-5",
             latent: { x: 1, y: 1 }
         });
+        expect(await selectCellCount({ latent_polygon: polygon }, db)).toEqual({ c: 4 });
     });
 
     test("should select a single cell with a given ID", async () => {

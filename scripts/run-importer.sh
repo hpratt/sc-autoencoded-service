@@ -41,9 +41,9 @@ gcloud --quiet config set compute/zone $GKE_ZONE
 gcloud --quiet container clusters get-credentials $GKE_CLUSTER
 
 # If this job already exists and is running, do not run.
-if kubectl get job import-annotated-datasets-job &>/dev/null ; then
-    echo "Existing import-annotated-datasets-job found. Deleting..."
-    kubectl delete job import-annotated-datasets-job
+if kubectl get job import-autoencoded-sc-job &>/dev/null ; then
+    echo "Existing import-autoencoded-sc-job found. Deleting..."
+    kubectl delete job import-autoencoded-sc-job
 fi
 
 # Deploy the configured service / Apply any changes to the configuration.

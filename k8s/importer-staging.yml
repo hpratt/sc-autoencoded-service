@@ -19,7 +19,7 @@ spec:
           - name: JVM_OPTS
             value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
           - name: ID_URLS
-            value: cells>http://gcp.wenglab.org/sc-autoencoded/cells.txt|genes>http://gcp.wenglab.org/sc-autoencoded/genes.txt
+            value: dataset>http://gcp.wenglab.org/sc-autoencoded/cells.txt|genes>http://gcp.wenglab.org/sc-autoencoded/genes.txt
           - name: COORDINATE_JSON_URLS
             value: dataset=latent>http://gcp.wenglab.org/sc-autoencoded/latent.json
           - name: MATRIX_JSON_URLS
@@ -41,7 +41,7 @@ spec:
       - name: cloudsql-proxy
         image: gcr.io/cloudsql-docker/gce-proxy:1.11
         command: ["/cloud_sql_proxy",
-                  "-instances=devenv-215523:us-east1:autoencoded-sc-instance=tcp:5432",
+                  "-instances=devenv-215523:us-east1:annotated-datasets-instance=tcp:5432",
                   "-credential_file=/secrets/cloudsql/staging-service-account.json"]
         securityContext:
           runAsUser: 2  # non-root user
